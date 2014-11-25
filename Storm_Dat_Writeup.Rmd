@@ -8,3 +8,14 @@ output: html_document
 ## Synopsis:
 This document anwsers questions concerning which types of weather events are most harmful with respect to population health and economic damages. The analysis will demonstrate both conclusions and workflow.
 
+## Definitions and Deliverables:
+
+## Data Processing:
+
+### Retrieving the Data:
+
+### Reading in the Data:
+
+### Figures and Analysis:
+
+## Results:
