@@ -80,7 +80,7 @@ Given the relatively large dataset at 37 variables and 902,297 rows, selecting o
 selstorm = storm %>% select(one_of(c("EVTYPE", "FATALITIES", "INJURIES", "PROPDMG", 
     "PROPDMGEXP", "CROPDMG", "CROPDMGEXP")))
 
-## Select desired rows where amounts are greater than 0.
+## Select desired rows where *any* amounts are greater than 0.
 selstorm = selstorm %>% filter(FATALITIES>0 | INJURIES>0 | PROPDMG>0 | CROPDMG>0)
 
 ```
