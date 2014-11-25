@@ -6,18 +6,56 @@ output: html_document
 ---
 
 ## Synopsis:
-This document anwsers questions concerning which types of weather events are most harmful with respect to population health and economic damages. The analysis will demonstrate both conclusions and workflow. Data source is the U.S. National Oceanic and Atmospheric Administration's (NOAA) storm database.
+This document answers questions concerning which types of weather events are most harmful with respect to population health and economic damages. The analysis will demonstrate both conclusions and workflow. Data source is the U.S. National Oceanic and Atmospheric Administration's (NOAA) storm database.
 
 The most harmful weather events were: (guess?)
 * Tornado
 * Flood
 
 ## Definitions and Deliverables:
-While the underlying database contains counts of injuries *and* fatalities, for simplicity we will be analysing the sum of both categories. With regard to economic damages, we will be accounting for only reported property damages.
+While the underlying database contains counts of injuries *and* fatalities, for simplicity we will be analyzing the sum of both categories. With regard to economic damages, we will be accounting for only reported property damages.
 
 ## Data Processing:
 
 ### Retrieving the Data:
+The creation of helper functions tends to make data retrieval and reading more standardized and portable across projects. 
+Below is our standardized download and read data functions.
+```{r,echo=TRUE,cache=TRUE}
+# Set string Variables
+localdir=getwd()
+#file suffix
+filename="StormData.csv.bz2"
+
+download_data=function(){
+# IF file doesn't exist in working directory, 
+# and no storm dataframe exists, dl and expand data file.
+if(
+  !(
+    file_test(op="-d",x=paste(localdir,filename,sep='/')) ||
+      (exists("storm"))
+    )
+){
+  # create a temporary file and a temporary directory on your local disk
+  tf <- tempfile()
+  td <- tempdir()
+  
+  # run the download file function, download as binary..  save the result to the temporary file
+  download.file(
+    "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2",
+    "StormData.csv.bz2",
+    mode = 'wb' 
+  )
+ }
+}
+
+read_data = function(){
+df = read.csv("StormData.csv.bz2",header = TRUE,stringsAsFactors=FALSE) 
+## Create coherent data frame
+return(df)
+}
+
+```
+
 
 ### Reading in the Data:
 
