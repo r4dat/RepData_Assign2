@@ -81,7 +81,7 @@ selstorm = storm %>% select(one_of(c("EVTYPE", "FATALITIES", "INJURIES", "PROPDM
     "PROPDMGEXP", "CROPDMG", "CROPDMGEXP")))
 
 ## Select desired rows where amounts are greater than 0.
-selstorm = selstorm %>% filter(FATALITIES>0,INJURIES>0,PROPDMG>0,CROPDMG>0)
+selstorm = selstorm %>% filter(FATALITIES>0 | INJURIES>0 | PROPDMG>0 | CROPDMG>0)
 
 ```
 
