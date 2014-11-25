@@ -6,9 +6,14 @@ output: html_document
 ---
 
 ## Synopsis:
-This document anwsers questions concerning which types of weather events are most harmful with respect to population health and economic damages. The analysis will demonstrate both conclusions and workflow.
+This document anwsers questions concerning which types of weather events are most harmful with respect to population health and economic damages. The analysis will demonstrate both conclusions and workflow. Data source is the U.S. National Oceanic and Atmospheric Administration's (NOAA) storm database.
+
+The most harmful weather events were: (guess?)
+* Tornado
+* Flood
 
 ## Definitions and Deliverables:
+
 
 ## Data Processing:
 
