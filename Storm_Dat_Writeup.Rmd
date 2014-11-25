@@ -13,7 +13,7 @@ The most harmful weather events were: (guess?)
 * Flood
 
 ## Definitions and Deliverables:
-
+While the underlying database contains counts of injuries *and* fatalities, for simplicity we will be analysing the sum of both categories. With regard to economic damages, we will be accounting for only reported property damages.
 
 ## Data Processing:
 
