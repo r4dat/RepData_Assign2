@@ -17,6 +17,15 @@ While the underlying database contains counts of injuries *and* fatalities, for 
 
 ## Data Processing:
 
+### Required Packages:
+```{r,echo=TRUE,cache=TRUE,warning=FALSE,results='hide'}
+library(plyr)
+library(dplyr)
+library(reshape2)
+library(ggplot2)
+```
+
+
 ### Retrieving the Data:
 The creation of helper functions tends to make data retrieval and reading more standardized and portable across projects. 
 Below is our standardized download and read data functions.
@@ -54,6 +63,12 @@ df = read.csv("StormData.csv.bz2",header = TRUE,stringsAsFactors=FALSE)
 return(df)
 }
 
+```
+
+As noted in the above helper functions, the download command does nothing if the data file exists, or the expected dataframe exists. The read function reads and returns the specified dataframe.
+```{r,echo=TRUE,cache=TRUE}
+download_data()
+storm = read_data()
 ```
 
 
