@@ -19,7 +19,7 @@ if(
   # run the download file function, download as binary..  save the result to the temporary file
   download.file(
     "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2",
-    "StormData.csv",
+    "StormData.csv.bz2",
     mode = 'wb' 
   )
 
