@@ -85,7 +85,39 @@ selstorm = selstorm %>% filter(FATALITIES>0 | INJURIES>0 | PROPDMG>0 | CROPDMG>0
 
 ```
 
-While the injuries and fatalities variables are in a comparable state, the damage numbers are not. Within the data they are a 3 digit number with the "Type"DMGEXP variable giving a character denoting places. E.g. 250K is 250,000; 20B is 20,000,000 and so on. In order to by amiable to numerical analysis we must transform these variables so that they are on the same scale. 
+While the injuries and fatalities variables are in a comparable state, the damage numbers are not. Within the data they are a 3 digit number with the "Type"DMGEXP variable giving a character or number denoting places. E.g. 250K is 250,000; 20B is 20,000,000 and so on. In order to by amiable to numerical analysis we must transform these variables so that they are on the same scale. 
+
+The PROPDMGEXP contains 16 seperate character possibilites:
+```{r,echo=TRUE,cache=TRUE}
+levels(as.factor(selstorm$PROPDMGEXP))
+```
+And CROPDMGEXP contains 8.
+```{r,echo=TRUE,cache=TRUE}
+levels(as.factor(selstorm$CROPDMGEXP))
+```
+
+We will assume that "-", "+", "", and "?" mean do not transform.
+The following function accepts a number and multiplies it by the transform outlined.
+```{r,echo=TRUE,cache=TRUE}
+trans = function(value, unit) {
+    multiply = unit
+    if (unit=="-" || unit=="+" || unit=="" || unit=="?")_
+        multiply = 0
+    else if(unit == "h" || unit == "H") {
+        multiply = 2
+    }
+    else if(unit == "k" || unit == "K") {
+        multiply = 3
+    }
+    else if(unit == "m" || unit == "M") {
+        multiply = 6
+    }
+    else if(unit == "b" || unit == "B") {
+        multiply = 9
+    }
+    return(value*10^multiply)
+}
+```
 
 
 
