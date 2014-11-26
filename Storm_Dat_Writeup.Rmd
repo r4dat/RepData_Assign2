@@ -110,7 +110,7 @@ trans = function(value, unit) {
     else if(unit == "k" || unit == "K") {
         multiply = 3
     }
-    else if(unit == "m" || unit == "M") {
+    else if(unit == "M" || unit == "m") {
         multiply = 6
     }
     else if(unit == "b" || unit == "B") {
@@ -121,8 +121,22 @@ trans = function(value, unit) {
 ```
 
 
+We then create the true damage values:
+```{r,echo=TRUE,cache=TRUE}
+selstorm = selstorm %>% mutate("trueprop"=trans(PROPDMG,PROPDMGEXP))
+selstorm = selstorm %>% mutate("truecrop"=trans(CROPDMG,CROPDMGEXP))
+```
+
+And sum fatalities and injuries:
+```{r,echo=TRUE,cache=TRUE}
+selstorm = selstorm %>% mutate("truefat"=trans(INJURIES,FATALITIES))
+```
+
+Now that we're comparable we can aggregate by event type.
+```{r,echo=TRUE,cache=TRUE}
+grouped = selstorm %>% group_by(EVTYPE)
+```
 
 
-### Figures and Analysis:
 
 ## Results:
