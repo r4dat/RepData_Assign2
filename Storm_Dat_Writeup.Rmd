@@ -101,8 +101,9 @@ The following function accepts a number and multiplies it by the transform outli
 ```{r,echo=TRUE,cache=TRUE}
 trans = function(value, unit) {
     multiply = unit
-    if (unit=="-" || unit=="+" || unit=="" || unit=="?")_
+    if (unit=="-" || unit=="+" || unit=="" || unit=="?"){
         multiply = 0
+    }
     else if(unit == "h" || unit == "H") {
         multiply = 2
     }
